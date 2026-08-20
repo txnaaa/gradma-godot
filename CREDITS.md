@@ -3,8 +3,7 @@
 ## Original artwork
 
 All hand drawn art (grandma, market stalls, flies, swatter, chillies, lemons, bar, glass
-and its six fill levels, bingo hall interiors, THE END and WIN screens) is by Tushar
-Shingrani, from https://github.com/TusharShingrani/TINA_GRANDMA
+and its six fill levels, bingo hall interiors, THE END and WIN screens) is by Tina Shingrani
 
 ## Free assets
 
