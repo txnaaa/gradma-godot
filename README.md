@@ -7,14 +7,6 @@ evening at the hall.
 Real assets were used for this projects made by Tina Shingrani as well as, free CC0 art from Kenney, plus sound and a
 proper font. See CREDITS.md.
 
-## Opening the project Instructions
-
-1. Install Godot 4.3 or newer (standard version, not .NET). https://godotengine.org/download
-2. Open Godot, click Import, and select the `project.godot` file in this folder.
-3. Press F5. It starts on the main menu.
-
-If Godot warns the project was made with a different version, click "Convert full project".
-
 ## The flow
 
 MainMenu (your start page, click PLAY) -> intro video -> Intro cards -> Map
