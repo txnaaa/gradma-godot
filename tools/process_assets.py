@@ -69,8 +69,6 @@ for idx, name in [(8, "bg_market.png"), (11, "bg_lemons.png"), (13, "bg_bar.png"
 save(fit_h(trim(cutout(Image.open(F[4]))), 330), "tent_fruit.png")
 save(fit_h(trim(cutout(Image.open(F[5]))), 330), "tent_drinks.png")
 save(fit_h(trim(cutout(Image.open(F[0]))), 330), "stall_fruit_plain.png")
-
-# the ice and spice sheet has the tent on the left, loose chillies on the right
 ice = Image.open(F[10])
 save(fit_h(trim(cutout(ice.crop((0, 0, int(ice.width * 0.60), ice.height)))), 330), "tent_chilli.png")
 
@@ -86,13 +84,13 @@ for n, idx in enumerate([22, 25, 26, 27]):
 for n, idx in enumerate([23, 24]):
     save(fit_h(trim(cutout(Image.open(F[idx]))), 78), "chilli_green%d.png" % (n + 1))
 
-# ---- glass and liquid share one canvas, so keep it ---------------------
+# ---- glass and liquid share one canvas ---------------------
 GLASS = 520
 save(cutout(Image.open(F[20]), tol=18, grow=1).resize((GLASS, GLASS), Image.LANCZOS), "glass.png")
 for n, idx in enumerate([14, 15, 16, 17, 18, 19]):
     save(cutout(Image.open(F[idx])).resize((GLASS, GLASS), Image.LANCZOS), "fill%d.png" % n)
 
-# ---- bottle idle and pouring also share a canvas -----------------------
+# ---- bottle pouring also share a canvas -----------------------
 POUR_W = 620
 for idx, name in [(12, "bottle_idle.png"), (21, "bottle_pour.png")]:
     im = cutout(Image.open(F[idx]))
@@ -100,8 +98,6 @@ for idx, name in [(12, "bottle_idle.png"), (21, "bottle_pour.png")]:
 
 print("done")
 
-
-# ---- second drop: one sheet with several drawings on it -----------------
 # Each drawing is a separate blob of ink on white, so label them and cut by box.
 SHEET = os.path.join(SRC, "WhatsApp Image 2026-08-17 at 15.55.19.jpeg")
 
@@ -121,7 +117,6 @@ if os.path.exists(SHEET):
         part = sheet.crop((x0 - 8, y0 - 8, x1 + 8, y1 + 8))
         save(fit_h(trim(part), h), name)
 
-# the black haired woman in the first drop is the stall keeper, not Nan
 old = os.path.join(OUT, "grandma.png")
 if os.path.exists(old) and os.path.exists(os.path.join(OUT, "grandma_walk.png")):
     os.replace(old, os.path.join(OUT, "vendor.png"))
@@ -147,8 +142,6 @@ def _drop_colour(img, sample, tol=52, grow=1):
     return out
 
 
-# the lemons in the crate touch each other, so a soft ellipse mask around one of
-# them is cleaner than trying to trace an outline
 crate = Image.open(os.path.join(OUT, "bg_lemons.png")).convert("RGB")
 lemon = crate.crop((342, 298, 542, 482)).convert("RGBA")
 lw, lh = lemon.size
