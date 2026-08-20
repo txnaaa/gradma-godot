@@ -86,7 +86,6 @@ def power_chord(root, dur, amp=1.0):
     return driven * env(n, 0.004, dur * 0.85) * amp
 
 
-# E5  E5  G5  A5  |  E5  E5  D5  G5   (E minor pentatonic territory)
 PROG = [4, 4, 7, 9, 4, 4, 2, 7]
 RIFF = [16, 19, 21, 19, 16, 14, 16, None, 21, 19, 16, 19, 14, 16, 12, None]
 
@@ -114,13 +113,12 @@ out = rock[:loop_n].copy()
 out[:rock.size - loop_n] += rock[loop_n:]
 write_ogg(out, "music_rock")
 
-# ------------------------------------------------------- villain lair
+# ------------------------------------------------------- villain lair(not gonna use that anymore)
 LEN = 24.0
 n = int(LEN * SR)
 x = np.arange(n) / SR
 lair = np.zeros(n)
 
-# low drone, two slightly detuned oscillators so it beats slowly
 lair += np.sin(2 * np.pi * hz(-20) * x) * 0.55
 lair += np.sin(2 * np.pi * hz(-20) * 1.004 * x) * 0.45
 lair += np.sin(2 * np.pi * hz(-8) * x) * 0.18 * (0.6 + 0.4 * np.sin(2 * np.pi * 0.07 * x))
@@ -140,7 +138,7 @@ for i, semi in enumerate(ARP):
     end = min(n, s + ln)
     lair[s:end] += bell[:end - s]
 
-# slow heartbeat toms
+
 for beat in np.arange(0.0, LEN, 3.0):
     ln = int(0.5 * SR)
     xx = np.arange(ln) / SR
@@ -149,19 +147,17 @@ for beat in np.arange(0.0, LEN, 3.0):
     end = min(n, s + ln)
     lair[s:end] += tom[:end - s]
 
-# a breath of noise that swells and falls, twice
 for centre in [8.0, 19.0]:
     swell = np.exp(-((x - centre) ** 2) / 4.0)
     lair += rng.normal(0, 1, n) * swell * 0.05
 
-# tritone stab near the end for the sting
 s = int(20.5 * SR)
 ln = min(int(2.4 * SR), n - s)
 xx = np.arange(ln) / SR
 stab = (np.sin(2 * np.pi * hz(4) * xx) + np.sin(2 * np.pi * hz(10) * xx)) * env(ln, 0.01, 0.9) * 0.28
 lair[s:s + ln] += stab
 
-# fade the very ends into each other so the loop does not click
+
 fade = int(0.35 * SR)
 lair[:fade] *= np.linspace(0, 1, fade)
 lair[-fade:] *= np.linspace(1, 0, fade)
