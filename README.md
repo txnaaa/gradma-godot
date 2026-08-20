@@ -84,7 +84,6 @@ size. The HUD uses Godot's built in `NinePatchRect` for the same reason.
 | Flaming reload | `icon_retry.png` | both end screens, grows on hover |
 | Biscuit | `cookie.png` | menu, last intro card, over a finished stall, win screen |
 | Red anger mark | `anger.png` | pops up whenever you drop, spill or miss |
-| Black haired woman | `vendor.png` | spare, she is the stall keeper not Nan |
 | Three flies | `fly1/2/3.png` | fruit stand, cycled for a wing flap |
 | Pink swatter | `swatter.png` | fruit stand cursor |
 | Six chillies | `chilli_red1-4`, `chilli_green1-2` | falling chillies, picked at random |
@@ -96,7 +95,6 @@ size. The HUD uses Godot's built in `NinePatchRect` for the same reason.
 | Bingo hall with the telly | `bg_bingo.png` | bingo game |
 | Bingo hall with WIN | `bg_win.png` | winning ending |
 | THE END | `bg_end.png` | losing ending |
-| Plain fruit stall | `stall_fruit_plain.png` | spare, not used yet |
 
 ## Tuning
 
